@@ -1,0 +1,423 @@
+/* Colours are the project showcase slide's: the pale grey-blue behind the slide (--paper), its cream (--sheet),
+   black text, the title blue (--blue) and the pink rule (--rule). The others are shades of those, made to be readable:
+   --act is the blue darkened until white text on it passes 4.5:1, --soft is black softened for secondary text,
+   --rule-strong is the pink deepened for chart outlines, and --stage is the blue greyed so any object colour shows on it. */
+:root {
+  --paper: #f3f4f7;
+  --sheet: #f9f7f1;
+  --ink: #000000;
+  --soft: #66655f;
+  --rule: #f9d8dc;
+  --rule-strong: #e6bcc2;
+  --blue: #3a83ab;
+  --stage: #7090a5;
+  --act: #2f7096;
+  --right: #1e7f57;
+  --wrong: #b8352d;
+  --word: "Charis SIL", "Gentium Plus", "Doulos SIL", "Times New Roman", serif;
+  --text: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--text);
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+main {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 28px 24px 64px;
+}
+
+/* ---- top row ---- */
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 16px 32px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--rule);
+}
+
+h1 {
+  font-family: var(--word);
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 1;
+  margin: 0;
+  color: var(--blue);
+}
+
+.tally {
+  margin: 0 0 0 auto;
+  color: var(--soft);
+  font-variant-numeric: tabular-nums;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.875rem;
+  color: var(--soft);
+}
+
+select {
+  font: inherit;
+  font-size: 1rem;
+  color: var(--ink);
+  background: var(--sheet);
+  border: 1px solid var(--rule-strong);
+  border-radius: 4px;
+  padding: 7px 10px;
+  min-width: 0;
+}
+
+.problem {
+  margin: 20px 0 0;
+  padding: 12px 16px;
+  border-left: 3px solid var(--wrong);
+  background: var(--sheet);
+  max-width: 70ch;
+}
+
+/* ---- the three steps ---- */
+.round {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 1fr);
+  margin-top: 28px;
+  border: 1px solid var(--rule);
+  background: var(--sheet);
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 22px 22px 26px;
+  min-width: 0;
+}
+
+.panel + .panel {
+  border-left: 1px solid var(--rule);
+}
+
+h2 {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.step {
+  font-family: var(--word);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--soft);
+  font-variant-numeric: lining-nums;
+}
+
+h3 {
+  margin: 10px 0 -6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--soft);
+}
+
+.waiting {
+  margin: 0;
+  color: var(--soft);
+  max-width: 34ch;
+}
+
+/* ---- the object and the guess ---- */
+.stage {
+  background: var(--stage);
+  aspect-ratio: 4 / 3;
+  display: grid;
+  place-items: center;
+}
+
+.stage svg {
+  width: 100%;
+  height: 100%;
+}
+
+.stage-hidden {
+  color: #3f5a6b;
+}
+
+.caption {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.aside {
+  color: var(--soft);
+  font-weight: 400;
+  font-size: 0.9375rem;
+}
+
+.choosers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+  gap: 10px;
+}
+
+/* ---- the word: the one loud thing on the page ---- */
+.word {
+  margin: 4px 0 0;
+  font-family: var(--word);
+  font-size: clamp(3.25rem, 8.5vw, 6.5rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+  color: var(--blue);
+}
+
+.word-none {
+  color: var(--soft);
+  font-style: italic;
+  font-size: 0.5em;
+}
+
+.ipa {
+  margin: 0;
+  font-family: var(--word);
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+.ipa .aside {
+  font-family: var(--text);
+}
+
+/* ---- sound strips ---- */
+.strip {
+  display: block;
+  height: auto;
+  border: 1px solid var(--rule-strong);
+}
+
+.strip-paper {
+  fill: #fff;
+}
+
+.strip-ink {
+  fill: var(--ink);
+}
+
+.quiet-note {
+  margin: 0;
+  color: var(--soft);
+}
+
+/* ---- mouth traces ---- */
+details {
+  margin-top: 6px;
+  border-top: 1px solid var(--rule);
+  padding-top: 12px;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: 500;
+  width: fit-content;
+}
+
+.detail {
+  margin: 10px 0 12px;
+  color: var(--soft);
+  max-width: 62ch;
+}
+
+.traces {
+  display: grid;
+  gap: 6px;
+}
+
+.trace {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+}
+
+.trace-name {
+  font-size: 0.875rem;
+  color: var(--soft);
+}
+
+.trace svg {
+  display: block;
+  height: 30px;
+  overflow: visible;
+}
+
+.trace-line {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.trace-floor {
+  stroke: var(--rule-strong);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.trace-tick {
+  stroke: var(--rule-strong);
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+  vector-effect: non-scaling-stroke;
+}
+
+/* ---- the verdict and the listener's beliefs ---- */
+.verdict {
+  margin: 0;
+  font-family: var(--word);
+  font-size: 1.75rem;
+  line-height: 1.15;
+}
+
+.verdict-right {
+  color: var(--right);
+}
+
+.verdict-wrong {
+  color: var(--wrong);
+}
+
+.beliefs {
+  display: grid;
+  gap: 14px;
+}
+
+.belief h4 {
+  margin: 0 0 4px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.belief-miss {
+  font-weight: 400;
+  color: var(--wrong);
+}
+
+.belief ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 3px;
+}
+
+.belief li {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr) 40px;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  color: var(--soft);
+}
+
+.belief li.chosen {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.belief-bar {
+  height: 8px;
+  background: var(--paper);
+}
+
+.belief-bar span {
+  display: block;
+  height: 100%;
+  background: var(--rule-strong);
+}
+
+.chosen .belief-bar span {
+  background: var(--ink);
+}
+
+.belief-chance {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- buttons ---- */
+.act {
+  font: inherit;
+  font-weight: 500;
+  color: #fff;
+  background: var(--act);
+  border: 1px solid var(--act);
+  border-radius: 4px;
+  padding: 10px 16px;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.act:hover:not(:disabled) {
+  background: #255f85;
+}
+
+.act:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.act-quiet {
+  color: var(--act);
+  background: transparent;
+}
+
+.act-quiet:hover:not(:disabled) {
+  background: rgba(47, 112, 150, 0.1);
+}
+
+:is(button, select, summary):focus-visible {
+  outline: 2px solid var(--act);
+  outline-offset: 2px;
+}
+
+.after {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* ---- narrow screens: the three steps stack ---- */
+@media (max-width: 860px) {
+  .round {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .panel + .panel {
+    border-left: 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .stage {
+    max-width: 360px;
+  }
+
+  .tally {
+    margin-left: 0;
+  }
+}
